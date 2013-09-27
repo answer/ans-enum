@@ -3,8 +3,6 @@ require "ans-enum/version"
 module Ans
   module Enum
     def self.included(m)
-      class_name = m.to_s.to_sym
-
       instance_methods = Module.new
       class_methods = Module.new
 
