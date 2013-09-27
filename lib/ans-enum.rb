@@ -28,15 +28,17 @@ module Ans
             end
           end
 
+          status_map = {}
+
           instance_methods.class_eval do
             enums.each do |enum|
               define_method :"#{name}_#{enum}" do
-                status_class.new enum
+                status_map[enum] ||= status_class.new enum
               end
             end
 
             define_method :"#{name}_null" do
-              status_class.new
+              status_map[:null] ||= status_class.new
             end
           end
         end
